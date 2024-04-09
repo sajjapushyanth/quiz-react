@@ -45,12 +45,19 @@ export default function Quiz(){
         }
     }
 
-    function getClassNames(option,selected,isCorrect){
+    function getClassNames(option){
         if(selected===option &&isCorrect!==null){
-            if(!isCorrect){
+            if(isCorrect){
+                return "selected"
+            }
+            else{
                 return "wrong"
             }
-            return "selected"
+        }
+        else if(answered){
+            if(option===question.ans){
+                return "selected"
+            }
         }
         return ""
 
