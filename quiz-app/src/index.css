@@ -7,7 +7,8 @@
 
 body{
   box-sizing: border-box;
-  background:linear-gradient(blue,green,red,yellow);
+  background: linear-gradient(to right, #85D8CE, #9963E9);
+
 
   font-family: 'Poppins', sans-serif;
 
