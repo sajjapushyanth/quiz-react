@@ -62,6 +62,14 @@ export default function Quiz(){
         return ""
 
     }
+    function reset(){
+        setIndex(0)                      
+        setQuestion(data[index])        
+        setSelected(null)
+        setIsCorrect(null)
+        setAnswered(false)
+        setResult(0)
+    }
     return(
         
         <div className="quiz-container">
@@ -71,17 +79,20 @@ export default function Quiz(){
                 <>
                 <h2 className="quiz-question">{index+1} .{question.question}</h2>
             <ul className="quiz-options">
-                <li className={`quiz-list ${getClassNames(1,selected,isCorrect)}`} onClick={()=>list(1)}>{question.option1}</li>
-                <li className={`quiz-list ${getClassNames(2,selected,isCorrect)}`} onClick={()=>list(2)}>{question.option2}</li>
-                <li className={`quiz-list ${getClassNames(3,selected,isCorrect)}`} onClick={()=>list(3)}>{question.option3}</li>
-                <li className={`quiz-list ${getClassNames(4,selected,isCorrect)}`} onClick={()=>list(4)}>{question.option4}</li>
+                <li className={`quiz-list ${getClassNames(1)}`} onClick={()=>list(1)}>{question.option1}</li>
+                <li className={`quiz-list ${getClassNames(2)}`} onClick={()=>list(2)}>{question.option2}</li>
+                <li className={`quiz-list ${getClassNames(3)}`} onClick={()=>list(3)}>{question.option3}</li>
+                <li className={`quiz-list ${getClassNames(4)}`} onClick={()=>list(4)}>{question.option4}</li>
                 
             </ul>
             <button className="next" onClick={nextQuestion}>Next</button>
             <h3 className="next-page">{index+1} of {data.length} Question </h3>
                 </>
             ):
-            (<div className="result"> Your Result is : <b>{result}</b> </div>)}
+            (<div className="result"> Your Result is : <b>{result}</b>
+
+                <button className="next" onClick={reset}>Reset</button>
+             </div>)}
             
         </div>
     )
