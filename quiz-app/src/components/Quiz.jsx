@@ -1,6 +1,6 @@
 import "./Quiz.css"
 import { data } from "../assets/data"
-import {useState } from "react"
+import {useEffect, useState } from "react"
 export default function Quiz(){
 
     const [index,setIndex]=useState(0)
@@ -12,15 +12,18 @@ export default function Quiz(){
 
     console.log("result : ",result)
 
+    useEffect(()=>{
+        setQuestion(data[index])
 
+    },[index])
     function nextQuestion(){
-        setIndex(index+1)
+        
         if(index+1===5){
             setQuestion(null)
         }
         else{
-            
-        setQuestion(data[index+1])
+            setIndex(index+1)
+        
         }
         setSelected(null)
         setIsCorrect(null)
@@ -63,8 +66,7 @@ export default function Quiz(){
 
     }
     function reset(){
-        setIndex(0)                      
-        setQuestion(data[index])        
+        setIndex(0)                           
         setSelected(null)
         setIsCorrect(null)
         setAnswered(false)
